@@ -1,29 +1,13 @@
 import pandas as pd
 
-def lista_alunos():
-    while True:
-        try:
-            opc = int(input("Sua escolha: "))
-            if opc == 1:
-                file_path = "D:/OneDrive/Projetos Python/Web Scraping/csv/1B.csv"
-            elif opc == 2:
-                file_path = "D:/OneDrive/Projetos Python/Web Scraping/csv/1C.csv"
-            elif opc == 3:
-                file_path = "D:/OneDrive/Projetos Python/Web Scraping/csv/2A.csv"
-            elif opc == 4:
-                file_path = "D:/OneDrive/Projetos Python/Web Scraping/csv/2B.csv"
-            elif opc == 5:
-                file_path = "D:/OneDrive/Projetos Python/Web Scraping/csv/2C.csv"
-            else:
-                print("Opção inválida. Tente novamente.")
-                continue
-            break
-        except ValueError:
-            print("Entrada inválida. Digite um número entre 1 e 5.")
-    
-    df_excel = pd.read_csv(file_path, sep=';')
-    return df_excel
-
-# Exemplo de uso
-df_alunos = lista_alunos()
-print(df_alunos)
+data  = 'C:\\Users\\anddr\\Downloads\\MAPAO_REYNALDODONASCIMENTOFALLEIROSDOUTOR-10236_2ªSERIEAMANHAANUAL_1.xlsx'
+planilha = pd.read_excel(data,skiprows=14 )
+#planilha = planilha.loc[:, ~planilha.columns.str.contains('^Unnamed')]
+planilha.dropna(axis=1, how='all', inplace=True)
+for plan in planilha.columns:
+    planilha.drop(planilha.columns[range(0,len(planilha),5)])
+print(planilha)
+# print(planilha[13:len(planilha)-1])
+#print(planilha.loc[13:len(planilha)-1].dropna)
+output_excel = 'C:\\Users\\anddr\\Downloads\\planilha_modificada.xlsx'
+planilha.to_excel(output_excel, index=False)
