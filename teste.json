@@ -1,0 +1,18 @@
+{
+    "cliente": {
+        "id": 2020,
+        "nome": "Maria Aparecida"
+    },
+    "pagamentos": [
+        {
+            "id": 123,
+            "descricacao": "Compra do livro Cangaceiro JavaScript",
+            "valor": 50.5
+        },
+        {
+            "id": 124,
+            "descricacao": "Mensalidade escolar",
+            "valor": 1500
+        }
+    ]
+ }
